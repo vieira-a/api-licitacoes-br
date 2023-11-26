@@ -7,11 +7,11 @@ import {
 } from 'typeorm';
 
 @Entity({ name: 'processos' })
-export class ProcessosEntity {
+export class ProcessoEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ name: 'codigoLicitacao', nullable: false })
+  @Column({ unique: true, name: 'codigo_licitacao', nullable: false })
   codigoLicitacao: number;
 
   @Column({ name: 'identificacao', nullable: false })
@@ -23,26 +23,26 @@ export class ProcessosEntity {
   @Column({ name: 'resumo', nullable: false })
   resumo: string;
 
-  @Column({ name: 'codigoSituacaoEdital', nullable: false })
-  codigoSituacaoEdital: number;
+  @Column({ name: 'situacao_edital', nullable: false })
+  situacaoEdital: number;
 
   @Column({ name: 'status', nullable: false })
   status: number;
 
-  @Column({ name: 'dataHoraInicioLances', nullable: false })
-  dataHoraInicioLances: Date;
+  @Column({ name: 'inicio_lances', nullable: false })
+  inicioLances: Date;
 
   @CreateDateColumn({
-    name: 'created_at',
+    name: 'criado',
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP()',
   })
-  createdAt: Date;
+  criado: Date;
 
   @UpdateDateColumn({
-    name: 'updated_at',
+    name: 'atualizado',
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP()',
   })
-  updatedAt: Date;
+  atualizado: Date;
 }

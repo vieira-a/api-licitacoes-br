@@ -2,19 +2,22 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { ProcessoEntity } from './processo.entity';
 
 @Entity({ name: 'itens_processos' })
-export class ProcessosEntity {
+export class ItemProcessoEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column({ name: 'quantidade', nullable: false })
   quantidade: number;
 
-  @Column({ name: 'valorReferencia', nullable: false })
+  @Column({ name: 'valor_referencia', nullable: false })
   valorReferencia: number;
 
   @Column({ name: 'descricao', nullable: false })
@@ -26,17 +29,21 @@ export class ProcessosEntity {
   @Column({ name: 'codigo', nullable: false })
   codigo: number;
 
+  @OneToOne(() => ProcessoEntity)
+  @JoinColumn({ name: 'processo', referencedColumnName: 'codigoLicitacao' })
+  processo: ProcessoEntity;
+
   @CreateDateColumn({
-    name: 'created_at',
+    name: 'criado',
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP()',
   })
-  createdAt: Date;
+  criado: Date;
 
   @UpdateDateColumn({
-    name: 'updated_at',
+    name: 'atualizado',
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP()',
   })
-  updatedAt: Date;
+  atualizado: Date;
 }
