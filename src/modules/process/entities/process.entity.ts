@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 
 @Entity({ name: 'processos' })
-export class ProcessoEntity {
+export class ProcessEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
