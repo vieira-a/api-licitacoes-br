@@ -9,9 +9,10 @@ export class SaveProcessService {
     private readonly processRepository: ProcessRepository,
   ) {}
 
-  async saveProcess() {
+  async saveProcess(): Promise<void> {
     const process = await this.fetchProcessService.fetchProcess();
     for (const item of process) {
+      console.log(item);
       await this.processRepository.saveProcess(item);
     }
   }
