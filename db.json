@@ -1,0 +1,513 @@
+{
+  "processos": {
+    "result": [
+      {
+        "codigoLicitacao": 263455,
+        "numeroLicitacao": null,
+        "identificacao": "52.789/2023",
+        "numero": "245/2023",
+        "resumo": "REGISTRO DE PREÇOS PARA EVENTUAL PRESTAÇÃO DE SERVIÇOS DE MANUTENÇÃO DO SISTEMA DE DRENAGEM EM ÁREAS URBANAS\r\nE RURAIS, COM ENTREGAS PARCELADAS POR UM PERÍODO DE 12 (DOZE) MESES.",
+        "razaoSocial": "Prefeitura Municipal da Estância de Atibaia",
+        "nomeUnidade": "Prefeitura Municipal da Estância de Atibaia",
+        "status": {
+          "codigo": 15,
+          "descricao": "Suspenso - Antes da Abertura"
+        },
+        "situacao": {
+          "codigo": 0,
+          "descricao": null
+        },
+        "tipoLicitacao": {
+          "codigoModalidadeLicitacao": 2,
+          "modalidadeLicitacao": "Pregão para Registro de Preço",
+          "codigoTipoLicitacao": 4,
+          "siglaTipoLicitacao": "RPE",
+          "tipoLicitacao": "Registro de Preços Eletrônico",
+          "tipoRealizacao": "Eletrônico",
+          "tipoJulgamento": "Menor Preço"
+        },
+        "codigoSituacaoEdital": 8,
+        "codigoTratamentoDiferenciado": 1,
+        "dataHoraInicioLances": "2024-11-27T11:30:00Z",
+        "dataHoraInicioPropostas": "2023-11-09T11:00:00Z",
+        "dataHoraFinalPropostas": "2024-11-26T19:00:00Z",
+        "dataHoraFinalLances": null,
+        "dataHoraPublicacao": "2023-11-08T20:28:00Z",
+        "isPublicado": false,
+        "unidadeCompradora": {
+          "codigoUnidadeCompradora": 5911,
+          "nomeUnidadeCompradora": "Prefeitura Municipal da Estância de Atibaia",
+          "codigoComprador": 3319,
+          "nomeComprador": null,
+          "cidade": "Atibaia",
+          "codigoMunicipioIbge": null,
+          "uf": "SP"
+        },
+        "comprador": null,
+        "urlReferencia": "/sp/prefeitura-municipal-da-estancia-de-atibaia-3319/rpe-245-2023-2023-263455",
+        "statusProcessoPublico": {
+          "codigo": 15,
+          "descricao": "Suspenso - Antes da Abertura"
+        },
+        "isExclusivoME": false
+      },
+      {
+        "codigoLicitacao": 265068,
+        "numeroLicitacao": null,
+        "identificacao": "25497/2023",
+        "numero": "12/2023",
+        "resumo": "Credenciamento de Laboratórios Regionais de Próteses Dentárias para prestação de serviços odontológicos de confecção de próteses dentárias sob medida, para atender a demanda da população do município de Sapucaia do Sul/RS, em conformidade com a Lei n....",
+        "razaoSocial": "Prefeitura Municipal de Sapucaia do Sul",
+        "nomeUnidade": "Prefeitura Municipal de Sapucaia do Sul",
+        "status": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "situacao": {
+          "codigo": 0,
+          "descricao": null
+        },
+        "tipoLicitacao": {
+          "codigoModalidadeLicitacao": 7,
+          "modalidadeLicitacao": "Credenciamento",
+          "codigoTipoLicitacao": 17,
+          "siglaTipoLicitacao": "CRED",
+          "tipoLicitacao": "Credenciamento",
+          "tipoRealizacao": "Eletrônico",
+          "tipoJulgamento": "Simples informação"
+        },
+        "codigoSituacaoEdital": 5,
+        "codigoTratamentoDiferenciado": 1,
+        "dataHoraInicioLances": "2024-11-15T17:00:00Z",
+        "dataHoraInicioPropostas": "2023-11-17T21:00:00Z",
+        "dataHoraFinalPropostas": "2024-11-15T16:45:00Z",
+        "dataHoraFinalLances": null,
+        "dataHoraPublicacao": "2023-11-17T17:16:00Z",
+        "isPublicado": false,
+        "unidadeCompradora": {
+          "codigoUnidadeCompradora": 4454,
+          "nomeUnidadeCompradora": "Prefeitura Municipal de Sapucaia do Sul",
+          "codigoComprador": 2470,
+          "nomeComprador": null,
+          "cidade": "Sapucaia do Sul",
+          "codigoMunicipioIbge": null,
+          "uf": "RS"
+        },
+        "comprador": null,
+        "urlReferencia": "/rs/prefeitura-municipal-de-sapucaia-do-sul-2470/cred-12-2023-2023-265068",
+        "statusProcessoPublico": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "isExclusivoME": false
+      },
+      {
+        "codigoLicitacao": 265780,
+        "numeroLicitacao": null,
+        "identificacao": "3356/2023",
+        "numero": "03/2023",
+        "resumo": "Edital de Chamamento Público para CREDENCIAMENTO DE PRESTADORES DE SERVIÇOS MÉDICOS PARA REALIZAÇÃO DE EXAMES DE RAIO-X COM RESPECTIVO LAUDO para usuários atendidos nas Unidades Básicas de Saúde do Município de São Francisco de Paula/RS.",
+        "razaoSocial": "Prefeitura Municipal de São Francisco de Paula",
+        "nomeUnidade": "Prefeitura Municipal de São Francisco de Paula",
+        "status": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "situacao": {
+          "codigo": 0,
+          "descricao": null
+        },
+        "tipoLicitacao": {
+          "codigoModalidadeLicitacao": 7,
+          "modalidadeLicitacao": "Credenciamento",
+          "codigoTipoLicitacao": 17,
+          "siglaTipoLicitacao": "CRED",
+          "tipoLicitacao": "Credenciamento",
+          "tipoRealizacao": "Eletrônico",
+          "tipoJulgamento": "Simples informação"
+        },
+        "codigoSituacaoEdital": 5,
+        "codigoTratamentoDiferenciado": 1,
+        "dataHoraInicioLances": "2024-10-24T12:30:00Z",
+        "dataHoraInicioPropostas": "2023-11-21T18:00:00Z",
+        "dataHoraFinalPropostas": "2024-10-24T12:29:00Z",
+        "dataHoraFinalLances": null,
+        "dataHoraPublicacao": "2023-11-21T17:42:00Z",
+        "isPublicado": false,
+        "unidadeCompradora": {
+          "codigoUnidadeCompradora": 5916,
+          "nomeUnidadeCompradora": "Prefeitura Municipal de São Francisco de Paula",
+          "codigoComprador": 3324,
+          "nomeComprador": null,
+          "cidade": "São Francisco de Paula",
+          "codigoMunicipioIbge": null,
+          "uf": "RS"
+        },
+        "comprador": null,
+        "urlReferencia": "/rs/prefeitura-municipal-de-sao-francisco-de-paula-3324/cred-03-2023-2023-265780",
+        "statusProcessoPublico": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "isExclusivoME": false
+      },
+      {
+        "codigoLicitacao": 259849,
+        "numeroLicitacao": null,
+        "identificacao": "92/2023",
+        "numero": "002/2023",
+        "resumo": "Credenciamento para empresas especializadas para prestação de serviços de inspeção veicular com todos os serviços, insumos e equipamentos necessários, observados os prazos máximos para a prestação de serviços, as especificações técnicas e parâmetros...",
+        "razaoSocial": "Prefeitura Municipal de Erval Velho",
+        "nomeUnidade": "Prefeitura Municipal de Erval Velho",
+        "status": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "situacao": {
+          "codigo": 0,
+          "descricao": null
+        },
+        "tipoLicitacao": {
+          "codigoModalidadeLicitacao": 7,
+          "modalidadeLicitacao": "Credenciamento",
+          "codigoTipoLicitacao": 17,
+          "siglaTipoLicitacao": "CRED",
+          "tipoLicitacao": "Credenciamento",
+          "tipoRealizacao": "Eletrônico",
+          "tipoJulgamento": "Simples informação"
+        },
+        "codigoSituacaoEdital": 5,
+        "codigoTratamentoDiferenciado": 1,
+        "dataHoraInicioLances": "2024-10-15T11:00:00Z",
+        "dataHoraInicioPropostas": "2023-10-16T11:00:00Z",
+        "dataHoraFinalPropostas": "2024-10-14T20:00:00Z",
+        "dataHoraFinalLances": null,
+        "dataHoraPublicacao": "2023-10-11T19:06:00Z",
+        "isPublicado": false,
+        "unidadeCompradora": {
+          "codigoUnidadeCompradora": 3048,
+          "nomeUnidadeCompradora": "Prefeitura Municipal de Erval Velho",
+          "codigoComprador": 1796,
+          "nomeComprador": null,
+          "cidade": "Erval Velho",
+          "codigoMunicipioIbge": null,
+          "uf": "SC"
+        },
+        "comprador": null,
+        "urlReferencia": "/sc/prefeitura-municipal-de-erval-velho-1796/cred-002-2023-2023-259849",
+        "statusProcessoPublico": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "isExclusivoME": false
+      },
+      {
+        "codigoLicitacao": 259901,
+        "numeroLicitacao": null,
+        "identificacao": "127/2023",
+        "numero": "004/2023",
+        "resumo": "FORNECIMENTO E LENTES E ARMAÇÕES.",
+        "razaoSocial": "Consórcio Intermunicipal do Vale do Caí",
+        "nomeUnidade": "Consórcio Intermunicipal do Vale do Caí",
+        "status": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "situacao": {
+          "codigo": 0,
+          "descricao": null
+        },
+        "tipoLicitacao": {
+          "codigoModalidadeLicitacao": 7,
+          "modalidadeLicitacao": "Credenciamento",
+          "codigoTipoLicitacao": 17,
+          "siglaTipoLicitacao": "CRED",
+          "tipoLicitacao": "Credenciamento",
+          "tipoRealizacao": "Eletrônico",
+          "tipoJulgamento": "Simples informação"
+        },
+        "codigoSituacaoEdital": 5,
+        "codigoTratamentoDiferenciado": 1,
+        "dataHoraInicioLances": "2024-10-14T11:00:00Z",
+        "dataHoraInicioPropostas": "2023-10-16T11:00:00Z",
+        "dataHoraFinalPropostas": "2024-10-11T20:00:00Z",
+        "dataHoraFinalLances": null,
+        "dataHoraPublicacao": "2023-10-13T12:47:00Z",
+        "isPublicado": false,
+        "unidadeCompradora": {
+          "codigoUnidadeCompradora": 6466,
+          "nomeUnidadeCompradora": "Consórcio Intermunicipal do Vale do Caí",
+          "codigoComprador": 3679,
+          "nomeComprador": null,
+          "cidade": "Montenegro",
+          "codigoMunicipioIbge": null,
+          "uf": "RS"
+        },
+        "comprador": null,
+        "urlReferencia": "/rs/consorcio-intermunicipal-do-vale-do-cai-3679/cred-004-2023-2023-259901",
+        "statusProcessoPublico": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "isExclusivoME": false
+      },
+      {
+        "codigoLicitacao": 258884,
+        "numeroLicitacao": null,
+        "identificacao": "48.163/2023",
+        "numero": "012/2023",
+        "resumo": "CHAMAMENTO PÚBLICO Nº 012/23 OBJETIVANDO O CREDENCIAMENTO DE PARECERISTAS PARA O SETOR CULTURAL DE ATIBAIA.",
+        "razaoSocial": "Prefeitura Municipal da Estância de Atibaia",
+        "nomeUnidade": "Prefeitura Municipal da Estância de Atibaia",
+        "status": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "situacao": {
+          "codigo": 0,
+          "descricao": null
+        },
+        "tipoLicitacao": {
+          "codigoModalidadeLicitacao": 7,
+          "modalidadeLicitacao": "Credenciamento",
+          "codigoTipoLicitacao": 17,
+          "siglaTipoLicitacao": "CRED",
+          "tipoLicitacao": "Credenciamento",
+          "tipoRealizacao": "Eletrônico",
+          "tipoJulgamento": "Simples informação"
+        },
+        "codigoSituacaoEdital": 5,
+        "codigoTratamentoDiferenciado": 1,
+        "dataHoraInicioLances": "2024-10-09T19:01:00Z",
+        "dataHoraInicioPropostas": "2023-10-10T11:00:00Z",
+        "dataHoraFinalPropostas": "2024-10-09T19:00:00Z",
+        "dataHoraFinalLances": null,
+        "dataHoraPublicacao": "2023-10-09T13:01:00Z",
+        "isPublicado": false,
+        "unidadeCompradora": {
+          "codigoUnidadeCompradora": 5911,
+          "nomeUnidadeCompradora": "Prefeitura Municipal da Estância de Atibaia",
+          "codigoComprador": 3319,
+          "nomeComprador": null,
+          "cidade": "Atibaia",
+          "codigoMunicipioIbge": null,
+          "uf": "SP"
+        },
+        "comprador": null,
+        "urlReferencia": "/sp/prefeitura-municipal-da-estancia-de-atibaia-3319/cred-012-2023-2023-258884",
+        "statusProcessoPublico": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "isExclusivoME": false
+      },
+      {
+        "codigoLicitacao": 259115,
+        "numeroLicitacao": null,
+        "identificacao": "90/2023",
+        "numero": "001/2023",
+        "resumo": "Credenciamento para contratação de pessoa jurídica para prestação de serviços de acolhimento institucional de longa permanência para pessoas idosas, conforme especificações e quantidades constantes do Anexo II – Termo de Referência deste edital.",
+        "razaoSocial": "Prefeitura Municipal de Erval Velho",
+        "nomeUnidade": "Prefeitura Municipal de Erval Velho",
+        "status": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "situacao": {
+          "codigo": 0,
+          "descricao": null
+        },
+        "tipoLicitacao": {
+          "codigoModalidadeLicitacao": 7,
+          "modalidadeLicitacao": "Credenciamento",
+          "codigoTipoLicitacao": 17,
+          "siglaTipoLicitacao": "CRED",
+          "tipoLicitacao": "Credenciamento",
+          "tipoRealizacao": "Eletrônico",
+          "tipoJulgamento": "Simples informação"
+        },
+        "codigoSituacaoEdital": 5,
+        "codigoTratamentoDiferenciado": 1,
+        "dataHoraInicioLances": "2024-10-08T17:05:00Z",
+        "dataHoraInicioPropostas": "2023-10-09T11:00:00Z",
+        "dataHoraFinalPropostas": "2024-10-08T17:00:00Z",
+        "dataHoraFinalLances": null,
+        "dataHoraPublicacao": "2023-10-06T16:13:00Z",
+        "isPublicado": false,
+        "unidadeCompradora": {
+          "codigoUnidadeCompradora": 3048,
+          "nomeUnidadeCompradora": "Prefeitura Municipal de Erval Velho",
+          "codigoComprador": 1796,
+          "nomeComprador": null,
+          "cidade": "Erval Velho",
+          "codigoMunicipioIbge": null,
+          "uf": "SC"
+        },
+        "comprador": null,
+        "urlReferencia": "/sc/prefeitura-municipal-de-erval-velho-1796/cred-001-2023-2023-259115",
+        "statusProcessoPublico": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "isExclusivoME": false
+      },
+      {
+        "codigoLicitacao": 258919,
+        "numeroLicitacao": null,
+        "identificacao": "3456/2023",
+        "numero": "02/2023",
+        "resumo": "Edital de Chamamento Público para CREDENCIAMENTO DE SERVIÇOS DE ACOLHIMENTO EM INSTITUIÇÕES DE LONGA PERMANÊNCIA DE IDOSOS - ILPI PARA IDOSOS DE AMBOS OS SEXOS E DIFERENTES GRAUS DE DEPENDÊNCIA atendidos pelo Município de São Francisco de Paula/RS.",
+        "razaoSocial": "Prefeitura Municipal de São Francisco de Paula",
+        "nomeUnidade": "Prefeitura Municipal de São Francisco de Paula",
+        "status": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "situacao": {
+          "codigo": 0,
+          "descricao": null
+        },
+        "tipoLicitacao": {
+          "codigoModalidadeLicitacao": 7,
+          "modalidadeLicitacao": "Credenciamento",
+          "codigoTipoLicitacao": 17,
+          "siglaTipoLicitacao": "CRED",
+          "tipoLicitacao": "Credenciamento",
+          "tipoRealizacao": "Eletrônico",
+          "tipoJulgamento": "Simples informação"
+        },
+        "codigoSituacaoEdital": 5,
+        "codigoTratamentoDiferenciado": 1,
+        "dataHoraInicioLances": "2024-10-04T12:30:00Z",
+        "dataHoraInicioPropostas": "2023-10-05T18:00:00Z",
+        "dataHoraFinalPropostas": "2024-10-04T12:29:00Z",
+        "dataHoraFinalLances": null,
+        "dataHoraPublicacao": "2023-10-05T17:48:00Z",
+        "isPublicado": false,
+        "unidadeCompradora": {
+          "codigoUnidadeCompradora": 5916,
+          "nomeUnidadeCompradora": "Prefeitura Municipal de São Francisco de Paula",
+          "codigoComprador": 3324,
+          "nomeComprador": null,
+          "cidade": "São Francisco de Paula",
+          "codigoMunicipioIbge": null,
+          "uf": "RS"
+        },
+        "comprador": null,
+        "urlReferencia": "/rs/prefeitura-municipal-de-sao-francisco-de-paula-3324/cred-02-2023-2023-258919",
+        "statusProcessoPublico": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "isExclusivoME": false
+      },
+      {
+        "codigoLicitacao": 252073,
+        "numeroLicitacao": null,
+        "identificacao": "98/2023",
+        "numero": "03/2023",
+        "resumo": "Chamamento público para credenciamento de pessoas jurídicas para prestação de serviços em consultoria ambiental, vistorias ambientais, pareceres técnicos, laudos técnicos, aprovação de projeto de recuperação de área degradada, anotação de...",
+        "razaoSocial": "Consórcio Intermunicipal do Vale do Caí",
+        "nomeUnidade": "Consórcio Intermunicipal do Vale do Caí",
+        "status": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "situacao": {
+          "codigo": 0,
+          "descricao": null
+        },
+        "tipoLicitacao": {
+          "codigoModalidadeLicitacao": 7,
+          "modalidadeLicitacao": "Credenciamento",
+          "codigoTipoLicitacao": 17,
+          "siglaTipoLicitacao": "CRED",
+          "tipoLicitacao": "Credenciamento",
+          "tipoRealizacao": "Eletrônico",
+          "tipoJulgamento": "Simples informação"
+        },
+        "codigoSituacaoEdital": 5,
+        "codigoTratamentoDiferenciado": 1,
+        "dataHoraInicioLances": "2024-08-22T11:00:00Z",
+        "dataHoraInicioPropostas": "2023-08-23T11:00:00Z",
+        "dataHoraFinalPropostas": "2024-08-21T11:00:00Z",
+        "dataHoraFinalLances": null,
+        "dataHoraPublicacao": "2023-08-22T12:39:00Z",
+        "isPublicado": false,
+        "unidadeCompradora": {
+          "codigoUnidadeCompradora": 6466,
+          "nomeUnidadeCompradora": "Consórcio Intermunicipal do Vale do Caí",
+          "codigoComprador": 3679,
+          "nomeComprador": null,
+          "cidade": "Montenegro",
+          "codigoMunicipioIbge": null,
+          "uf": "RS"
+        },
+        "comprador": null,
+        "urlReferencia": "/rs/consorcio-intermunicipal-do-vale-do-cai-3679/cred-03-2023-2023-252073",
+        "statusProcessoPublico": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "isExclusivoME": false
+      },
+      {
+        "codigoLicitacao": 251094,
+        "numeroLicitacao": null,
+        "identificacao": "108/2023",
+        "numero": "02/2023",
+        "resumo": "Credenciamento de Hospitais Públicos, Hospitais Privados sem fins lucrativos e Hospitais Privados com fins lucrativos, que a partir da publicação receberá a documentação para “Credenciamento de  serviço complementar ao SUS de unidades hospitalares que...",
+        "razaoSocial": "Consórcio Intermunicipal do Vale do Caí",
+        "nomeUnidade": "Consórcio Intermunicipal do Vale do Caí",
+        "status": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "situacao": {
+          "codigo": 0,
+          "descricao": null
+        },
+        "tipoLicitacao": {
+          "codigoModalidadeLicitacao": 7,
+          "modalidadeLicitacao": "Credenciamento",
+          "codigoTipoLicitacao": 17,
+          "siglaTipoLicitacao": "CRED",
+          "tipoLicitacao": "Credenciamento",
+          "tipoRealizacao": "Eletrônico",
+          "tipoJulgamento": "Simples informação"
+        },
+        "codigoSituacaoEdital": 5,
+        "codigoTratamentoDiferenciado": 1,
+        "dataHoraInicioLances": "2024-08-15T12:00:00Z",
+        "dataHoraInicioPropostas": "2023-08-15T19:00:00Z",
+        "dataHoraFinalPropostas": "2024-08-14T12:00:00Z",
+        "dataHoraFinalLances": null,
+        "dataHoraPublicacao": "2023-08-15T18:44:00Z",
+        "isPublicado": false,
+        "unidadeCompradora": {
+          "codigoUnidadeCompradora": 6466,
+          "nomeUnidadeCompradora": "Consórcio Intermunicipal do Vale do Caí",
+          "codigoComprador": 3679,
+          "nomeComprador": null,
+          "cidade": "Montenegro",
+          "codigoMunicipioIbge": null,
+          "uf": "RS"
+        },
+        "comprador": null,
+        "urlReferencia": "/rs/consorcio-intermunicipal-do-vale-do-cai-3679/cred-02-2023-2023-251094",
+        "statusProcessoPublico": {
+          "codigo": 1,
+          "descricao": "Recebendo Propostas"
+        },
+        "isExclusivoME": false
+      }
+    ],
+    "offset": 1,
+    "limit": 10,
+    "total": 180723,
+    "pageCount": 18073,
+    "currentPage": 1,
+    "nextPage": 2,
+    "previousPage": null
+  }
+}
