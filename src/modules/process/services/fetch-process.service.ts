@@ -1,14 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { ProcessEntity } from '../entities/process.entity';
 import { mapProcess } from '../helpers/process.mapper';
+import { fetchApi } from '../helpers/fetch-api';
 
 @Injectable()
 export class FetchProcessService {
-  private readonly processUrl: string = 'http://localhost:5000/processos';
+  private processUrl: string = `https://compras.api.portaldecompraspublicas.com.br/v2/licitacao/processos`;
 
-  async fetchProcess(): Promise<ProcessEntity> {
-    const request = await fetch(this.processUrl);
-    const data = await request.json();
-    return mapProcess(data);
+  async fetchProcess() {
+    const result = [];
+    let currentPage = 1;
+    const quantidadePaginas = 20;
+
+    while (currentPage <= quantidadePaginas) {
+      const newUrl = `${this.processUrl}?pagina=${currentPage}`;
+
+      const newData = await fetchApi(newUrl);
+      const mappedData = mapProcess(newData);
+      result.push(...mappedData);
+      currentPage++;
+    }
+    return result;
   }
 }

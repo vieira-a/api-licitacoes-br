@@ -1,6 +1,6 @@
 import { ProcessEntity } from '../entities/process.entity';
 
-export const mapProcess = (data: any): ProcessEntity => {
+export const mapProcess = (data: any): any => {
   const processes = data.result.map((field: any) => {
     const process = new ProcessEntity();
 

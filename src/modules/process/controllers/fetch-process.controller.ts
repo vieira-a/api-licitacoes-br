@@ -18,7 +18,11 @@ export class FetchProcessController {
         message: 'Dados salvos com sucesso',
       };
     } catch (error) {
-      throw new InternalServerErrorException('Houve um erro ao salvar dados');
+      console.log(error);
+      throw new InternalServerErrorException(
+        'Houve um erro ao salvar dados',
+        error,
+      );
     }
   }
 }

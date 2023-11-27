@@ -11,6 +11,8 @@ export class SaveProcessService {
 
   async saveProcess() {
     const process = await this.fetchProcessService.fetchProcess();
-    return await this.processRepository.saveProcess(process);
+    for (const item of process) {
+      await this.processRepository.saveProcess(item);
+    }
   }
 }
