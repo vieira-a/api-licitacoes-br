@@ -12,4 +12,10 @@ export class ProcessRepository {
   async saveProcess(process: ProcessEntity) {
     await this.processRepository.save(process);
   }
+
+  async findByCode(code: number) {
+    return await this.processRepository.findOne({
+      where: { codigoLicitacao: code },
+    });
+  }
 }

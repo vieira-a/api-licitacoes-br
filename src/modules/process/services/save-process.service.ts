@@ -12,7 +12,12 @@ export class SaveProcessService {
   async saveProcess(): Promise<void> {
     const process = await this.fetchProcessService.fetchProcess();
     for (const item of process) {
-      await this.processRepository.saveProcess(item);
+      const processAlreadyExists = await this.processRepository.findByCode(
+        item.codigoLicitacao,
+      );
+      if (!processAlreadyExists) {
+        await this.processRepository.saveProcess(item);
+      }
     }
   }
 }
