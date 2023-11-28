@@ -2,34 +2,31 @@ import {
   Controller,
   Get,
   HttpStatus,
-  InternalServerErrorException,
-  NotFoundException,
+  Res,
+  UnprocessableEntityException,
 } from '@nestjs/common';
 import { SaveProcessService } from '../services/save-process.service';
+import { Response } from 'express';
+import { serverError } from '../../../shared/exceptions/server-error';
 
 @Controller('/fetch-process')
 export class FetchProcessController {
   constructor(private readonly saveProcessService: SaveProcessService) {}
   @Get()
-  async fetchProcess() {
+  async fetchProcess(@Res() res: Response) {
     try {
-      await this.saveProcessService.saveProcess();
+      const result = await this.saveProcessService.saveProcess();
 
-      // if (result === null) {
-      //   return new UnprocessableEntityException('Não há dados para salvar');
-      // }
-
-      return {
-        statusCode: HttpStatus.OK,
-        message: 'Dados salvos com sucesso',
-      };
-    } catch (error) {
-      if (error.cause.code === 'ENOTFOUND') {
-        throw new NotFoundException('Houve um erro de conexão à API');
+      if (result === undefined) {
+        throw new UnprocessableEntityException('Não há processos novos');
+      } else {
+        return res.json({
+          statusCode: HttpStatus.OK,
+          message: 'Processos salvos com sucesso',
+        });
       }
-      throw new InternalServerErrorException(
-        'Houve um erro ao salvar os dados',
-      );
+    } catch (error) {
+      return serverError(error, res, 'Houve uma falha ao salvar os processos');
     }
   }
 }
