@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { FetchItemProcessService } from '../services/fetch-item-process.service';
+import { SaveItemProcessService } from '../services/save-item-process.service';
 
 @Controller('/fetch-process-itens')
 export class FetchItemProcessController {
   constructor(
-    private readonly fetchItemProcessService: FetchItemProcessService,
+    private readonly saveItemProcessService: SaveItemProcessService,
   ) {}
   @Get()
   async fetchProcessItem() {
-    await this.fetchItemProcessService.fetchItemProcess();
+    await this.saveItemProcessService.saveItemProcess();
   }
 }
