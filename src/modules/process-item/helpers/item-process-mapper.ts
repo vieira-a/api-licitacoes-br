@@ -1,6 +1,10 @@
 import { ItemProcessEntity } from '../entities/item-process.entity';
 
-export const mapProcessItem = (data: any, processo: any): any => {
+export const mapProcessItem = (data: any, processo: any) => {
+  if (!data || !data.itens || !data.itens.result) {
+    console.log('Dados inválidos ou não encontrados');
+    return []; // ou outra abordagem para lidar com dados inválidos
+  }
   if (data.isLote === false) {
     const itemsProcesses = data.itens.result.map((field: any) => {
       const item = new ItemProcessEntity();
