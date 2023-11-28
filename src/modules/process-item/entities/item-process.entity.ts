@@ -2,12 +2,9 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
-  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ProcessEntity } from '../../process/entities/process.entity';
 
 @Entity({ name: 'itens_processos' })
 export class ItemProcessEntity {
@@ -18,7 +15,7 @@ export class ItemProcessEntity {
   quantidade: number;
 
   @Column({ name: 'valor_referencia', nullable: false })
-  valorReferencia: number;
+  valorReferencia: string;
 
   @Column({ name: 'descricao', nullable: false })
   descricao: string;
@@ -29,9 +26,8 @@ export class ItemProcessEntity {
   @Column({ name: 'codigo', nullable: false })
   codigo: number;
 
-  @OneToOne(() => ProcessEntity)
-  @JoinColumn({ name: 'processo', referencedColumnName: 'codigoLicitacao' })
-  processo: ProcessEntity;
+  @Column({ name: 'processo', nullable: false })
+  processo: number;
 
   @CreateDateColumn({
     name: 'criado',
