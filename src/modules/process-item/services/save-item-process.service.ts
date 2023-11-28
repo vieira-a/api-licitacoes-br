@@ -12,7 +12,12 @@ export class SaveItemProcessService {
   async saveItemProcess() {
     const itemProcess = await this.fetchItemProcessService.fetchItemProcess();
     for (const item of itemProcess) {
-      if (item) {
+      const itemAlreadyExists =
+        await this.itemProcessRepository.findItemByProcess(
+          item.processo,
+          item.codigo,
+        );
+      if (!itemAlreadyExists) {
         await this.itemProcessRepository.saveItemProcess(item);
       }
     }

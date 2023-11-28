@@ -13,4 +13,10 @@ export class ItemProcessRepository {
   async saveItemProcess(itemProcess: any) {
     await this.itemProcessRepository.save(itemProcess);
   }
+
+  async findItemByProcess(process: number, codeItem: number) {
+    return await this.itemProcessRepository.findOne({
+      where: { processo: process, codigo: codeItem },
+    });
+  }
 }
