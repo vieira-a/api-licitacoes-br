@@ -18,7 +18,7 @@ export class SaveItemProcessService {
           item.codigo,
         );
       if (!itemAlreadyExists) {
-        await this.itemProcessRepository.saveItemProcess(item);
+        return await this.itemProcessRepository.saveItemProcess(item);
       }
     }
   }
