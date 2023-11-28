@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ItemProcessRepository } from '../repositories/process-item.repository';
 import { ProcessRepository } from '../../process/repositories/process.repository';
-import { fetchApi } from 'src/modules/process/helpers/fetch-api';
+import { fetchApi } from '../../../shared/helpers/fetch-api';
 import { mapProcessItem } from '../helpers/item-process-mapper';
 
 @Injectable()
@@ -21,7 +21,7 @@ export class FetchItemProcessService {
         `${this.processItemUrl}/${code}/itens`,
       );
 
-      let quantidadePaginas = 1;
+      let quantidadePaginas = null;
 
       if (initialData.isLote === false) {
         quantidadePaginas = initialData.itens.pageCount;

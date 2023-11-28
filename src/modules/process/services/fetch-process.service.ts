@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { mapProcess } from '../helpers/process.mapper';
-import { fetchApi } from '../helpers/fetch-api';
+import { fetchApi } from '../../../shared/helpers/fetch-api';
 import { ProcessEntity } from '../entities/process.entity';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class FetchProcessService {
   async fetchProcess(): Promise<ProcessEntity[]> {
     const currentDate = new Date();
     const intervalDate = new Date();
-    intervalDate.setDate(currentDate.getDate() + 29);
+    intervalDate.setDate(currentDate.getDate() + 1);
 
     const initialData = await fetchApi(
       `${
