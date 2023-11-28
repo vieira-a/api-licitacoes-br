@@ -18,4 +18,13 @@ export class ProcessRepository {
       where: { codigoLicitacao: code },
     });
   }
+
+  async findAllCodes() {
+    const processCodes = [];
+    const processes = await this.processRepository.find();
+    for (const item of processes) {
+      processCodes.push(item.codigoLicitacao);
+    }
+    return processCodes;
+  }
 }
