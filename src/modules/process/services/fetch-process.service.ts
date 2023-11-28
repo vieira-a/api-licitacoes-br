@@ -9,35 +9,32 @@ export class FetchProcessService {
 
   async fetchProcess(): Promise<ProcessEntity[]> {
     const currentDate = new Date();
-    let currentPage = 1;
     const intervalDate = new Date();
-    intervalDate.setDate(currentDate.getDate() + 1);
+    intervalDate.setDate(currentDate.getDate() + 29);
 
-    const data = await fetchApi(
+    const initialData = await fetchApi(
       `${
         this.processUrl
-      }?pagina=${currentPage}&dataInicial=${currentDate.toISOString()}&dataFinal=${intervalDate.toISOString()}&tipoData=1`,
+      }?pagina=1&dataInicial=${currentDate.toISOString()}&dataFinal=${intervalDate.toISOString()}&tipoData=1`,
     );
 
-    console.log('Página corrente', currentPage);
-    console.log('Quantidade de páginas', data.pageCount);
+    const quantidadePaginas = initialData.pageCount;
+    const promises = [];
 
-    const result = [];
-
-    const quantidadePaginas = data.pageCount;
-
-    while (currentPage <= quantidadePaginas) {
+    for (let currentPage = 1; currentPage <= quantidadePaginas; currentPage++) {
       const newUrl = `${
         this.processUrl
       }?pagina=${currentPage}&dataInicial=${currentDate.toISOString()}&dataFinal=${intervalDate.toISOString()}&tipoData=1`;
-      console.log(newUrl);
 
-      const newData = await fetchApi(newUrl);
-      const mappedData = await mapProcess(newData);
-      result.push(...mappedData);
-
-      currentPage++;
+      promises.push(fetchApi(newUrl));
     }
+
+    const allPagesData = await Promise.all(promises);
+    const result = allPagesData.reduce((acc, data) => {
+      const mappedData = mapProcess(data);
+      return [...acc, ...mappedData];
+    }, []);
+
     return result;
   }
 }
