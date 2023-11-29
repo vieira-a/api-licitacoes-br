@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProcessEntity } from '../entities/process.entity';
 import { Between, Repository } from 'typeorm';
+import { getDeleteDateInterval } from '../helpers';
 
 @Injectable()
 export class ProcessRepository {
@@ -29,14 +30,13 @@ export class ProcessRepository {
   }
 
   async deleteProcessByDate(date: Date) {
-    const starOfDeleteDate = new Date(date);
-    starOfDeleteDate.setUTCHours(0, 0, 0, 0);
-
-    const endOfDeleteDate = new Date(date);
-    endOfDeleteDate.setUTCHours(23, 59, 59, 999);
+    const deleteDateInterval = getDeleteDateInterval(date);
 
     const result = await this.processRepository.delete({
-      inicioLances: Between(starOfDeleteDate, endOfDeleteDate),
+      inicioLances: Between(
+        deleteDateInterval.starOfDeleteDate,
+        deleteDateInterval.endOfDeleteDate,
+      ),
     });
     console.log('deleteProcessByDate', date, result);
   }
