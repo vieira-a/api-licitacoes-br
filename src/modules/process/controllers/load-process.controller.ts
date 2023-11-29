@@ -1,8 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { LoadProcessService } from '../services/load-process.service';
-import { PageOptionsDto } from '../../../shared/dtos/page-options.dto';
-import { PageDto } from '../../../shared/dtos/page.dto';
 import { ProcessDto } from '../dtos/process.dto';
+import { PageDto, PageOptionsDto } from '../../../shared/dtos';
 
 @Controller('process')
 export class LoadProcessController {
