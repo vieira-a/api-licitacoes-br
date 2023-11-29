@@ -14,6 +14,10 @@ export class ProcessRepository {
     await this.processRepository.save(process);
   }
 
+  async findAllProcesses() {
+    return await this.processRepository.find();
+  }
+
   async findByCode(code: number) {
     return await this.processRepository.findOne({
       where: { codigoLicitacao: code },
@@ -32,12 +36,11 @@ export class ProcessRepository {
   async deleteProcessByDate(date: Date) {
     const deleteDateInterval = getDeleteDateInterval(date);
 
-    const result = await this.processRepository.delete({
+    await this.processRepository.delete({
       inicioLances: Between(
         deleteDateInterval.starOfDeleteDate,
         deleteDateInterval.endOfDeleteDate,
       ),
     });
-    console.log('deleteProcessByDate', date, result);
   }
 }

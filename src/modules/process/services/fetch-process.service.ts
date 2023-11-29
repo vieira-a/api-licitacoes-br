@@ -10,7 +10,7 @@ export class FetchProcessService {
   async fetchProcess(): Promise<ProcessEntity[]> {
     const currentDate = new Date();
     const intervalDate = new Date();
-    intervalDate.setDate(currentDate.getDate() + 1);
+    intervalDate.setDate(currentDate.getDate() + 0);
 
     const initialData = await fetchApi(
       `${
