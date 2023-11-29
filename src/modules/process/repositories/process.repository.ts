@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProcessEntity } from '../entities/process.entity';
-import { LessThanOrEqual, Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 
 @Injectable()
 export class ProcessRepository {
@@ -29,9 +29,15 @@ export class ProcessRepository {
   }
 
   async deleteProcessByDate(date: Date) {
-    date.setUTCHours(0, 0, 0, 0);
-    await this.processRepository.delete({
-      inicioLances: LessThanOrEqual(date),
+    const starOfDeleteDate = new Date(date);
+    starOfDeleteDate.setUTCHours(0, 0, 0, 0);
+
+    const endOfDeleteDate = new Date(date);
+    endOfDeleteDate.setUTCHours(23, 59, 59, 999);
+
+    const result = await this.processRepository.delete({
+      inicioLances: Between(starOfDeleteDate, endOfDeleteDate),
     });
+    console.log('deleteProcessByDate', date, result);
   }
 }
