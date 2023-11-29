@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ProcessRepository } from '../repositories/process.repository';
 import { FetchProcessService } from './fetch-process.service';
 import { SaveItemProcessService } from '../../../modules/process-item/services/save-item-process.service';
+import { getDeleteDate } from '../helpers';
 
 @Injectable()
 export class SaveProcessService {
@@ -12,10 +13,7 @@ export class SaveProcessService {
   ) {}
 
   async saveProcess(): Promise<void> {
-    const currentDate = new Date();
-    const deleteDate = new Date();
-    deleteDate.setDate(currentDate.getDate() - 1);
-
+    const deleteDate = getDeleteDate();
     await this.processRepository.deleteProcessByDate(deleteDate);
 
     const process = await this.fetchProcessService.fetchProcess();
