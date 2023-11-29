@@ -7,6 +7,7 @@ import { PageOptionsDto } from '../../../shared/dtos/page-options.dto';
 import { PageMetaDto } from '../../../shared/dtos/page-meta.dto';
 import { PageDto } from '../../../shared/dtos/page.dto';
 import { ProcessDto } from '../dtos/process.dto';
+import { mapDtoProcess } from '../helpers';
 
 @Injectable()
 export class ProcessRepository {
@@ -36,7 +37,7 @@ export class ProcessRepository {
       pageOptionsDto,
     });
 
-    return new PageDto(entities, pageMetaDto);
+    return new PageDto(mapDtoProcess(entities), pageMetaDto);
   }
 
   async findByCode(code: number) {
