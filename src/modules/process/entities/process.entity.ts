@@ -11,7 +11,7 @@ export class ProcessEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ name: 'codigo_licitacao', nullable: false })
+  @Column({ unique: true, name: 'codigo_licitacao', nullable: false })
   codigoLicitacao: number;
 
   @Column({ name: 'identificacao', nullable: false })

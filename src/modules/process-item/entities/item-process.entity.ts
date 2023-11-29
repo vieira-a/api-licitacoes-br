@@ -1,7 +1,10 @@
+import { ProcessEntity } from '../../../modules/process/entities/process.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -26,7 +29,13 @@ export class ItemProcessEntity {
   @Column({ name: 'codigo', nullable: false })
   codigo: number;
 
-  @Column({ name: 'processo', nullable: false })
+  @ManyToOne(() => ProcessEntity, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({
+    name: 'processo',
+    referencedColumnName: 'codigoLicitacao',
+  })
   processo: number;
 
   @CreateDateColumn({
