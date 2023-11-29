@@ -12,6 +12,12 @@ export class SaveProcessService {
   ) {}
 
   async saveProcess(): Promise<void> {
+    const currentDate = new Date();
+    const deleteDate = new Date();
+    deleteDate.setDate(currentDate.getDate() - 1);
+
+    await this.processRepository.deleteProcessByDate(deleteDate);
+
     const process = await this.fetchProcessService.fetchProcess();
 
     for (const item of process) {

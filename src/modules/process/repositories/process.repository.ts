@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProcessEntity } from '../entities/process.entity';
-import { Repository } from 'typeorm';
+import { LessThanOrEqual, Repository } from 'typeorm';
 
 @Injectable()
 export class ProcessRepository {
@@ -26,5 +26,12 @@ export class ProcessRepository {
       processCodes.push(item.codigoLicitacao);
     }
     return processCodes;
+  }
+
+  async deleteProcessByDate(date: Date) {
+    date.setUTCHours(0, 0, 0, 0);
+    await this.processRepository.delete({
+      inicioLances: LessThanOrEqual(date),
+    });
   }
 }
