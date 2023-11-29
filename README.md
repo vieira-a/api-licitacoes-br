@@ -1,73 +1,55 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Extrator de Processos Licitatórios
+Status: em desenvolvimento
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Contexto
 
-## Description
+Este projeto (apenas backend) tem como objetivo criar um banco de dados abrangente contendo informações sobre os processos licitatórios no Brasil. Um dos sistemas essenciais para essa integração é o [Portal de Compras Públicas](https://www.portaldecompraspublicas.com.br/processos). Os dois prints exibidos na seção de Telas deste documento executam solicitações (requests) que carregam os dados na interface do site, e esses dados serão extraídos para nosso banco de dados.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Requisitos
 
-## Installation
+1. **Utilização de Transações**: Todas as operações no banco de dados selecionado devem ser realizadas dentro de transações.
 
-```bash
-$ npm install
-```
+2. **Tecnologias Utilizadas**:
+   - NestJS
+   - TypeScript
+   - PostgreSQL
 
-## Running the app
+## Objetivo
 
-```bash
-# development
-$ npm run start
+O objetivo principal deste projeto é criar um sistema de extração automática de processos e itens licitatórios, com as seguintes funcionalidades:
 
-# watch mode
-$ npm run start:dev
+1. **Extração Automática de Processos e Itens**:
+   - 1.1. A extração deve ocorrer automaticamente quatro vezes por dia e deve incluir apenas os processos dos próximos 30 dias.
+   - 1.2. Deve-se considerar as diferenças entre cada extração. Isso significa que, se houver extrações às 14h e às 18h, a segunda extração deve levar em conta os processos novos que foram cadastrados e atualizá-los se houver mudanças após a primeira extração, além de excluir os processos que não existem mais.
 
-# production mode
-$ npm run start:prod
-```
+2. **Rota para Forçar Extração via Chamada HTTP**:
+   - 2.1. Deve haver uma rota HTTP que permita forçar a extração de processos imediatamente quando chamada. Certifique-se de verificar se já não há uma extração em execução e não permitir extrações simultâneas.
 
-## Test
+3. **Rota de Busca de Processos Extraídos**:
+   - 3.1. Deve existir uma rota de busca que permita consultar os processos extraídos. Essa rota deve retornar os itens do processo junto com a solicitação.
+   - 3.2. A rota deve aceitar filtros, como data de início do processo, número do processo, uma busca textual no campo "resumo" e uma busca textual no campo "descrição do item".
+   - 3.3. A rota deve suportar paginação.
 
-```bash
-# unit tests
-$ npm run test
+## Campos Obrigatórios na Importação
 
-# e2e tests
-$ npm run test:e2e
+### Campos Obrigatórios para a Importação de Processos:
+- [Referência de API](https://compras.api.portaldecompraspublicas.com.br/v2/licitacao/processos?)
+   - codigoLicitacao
+   - identificacao
+   - numero (número do processo)
+   - resumo
+   - codigoSituacaoEdital
+   - status.codigo
+   - dataHoraInicioLances (Data de início do processo)
 
-# test coverage
-$ npm run test:cov
-```
+### Campos Obrigatórios para a Importação de Itens do Processo:
+- [Referência de API](https://compras.api.portaldecompraspublicas.com.br/v2/licitacao/252073/itens?filtro=&pagina=1)
+   - quantidade
+   - valorReferencia
+   - descricao
+   - participacao.codigo
+   - codigo
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Autor: [Anderson Vieira](https://linkedin/in/vieira-a)

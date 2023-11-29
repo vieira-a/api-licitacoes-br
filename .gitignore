@@ -37,3 +37,4 @@ lerna-debug.log*
 # ENVIROMENT
 .env
 db/migrations
+DOC.md
