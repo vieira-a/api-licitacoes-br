@@ -11,13 +11,17 @@ export class SaveItemProcessService {
 
   async saveItemProcess() {
     const itemProcess = await this.fetchItemProcessService.fetchItemProcess();
-    for (const item of itemProcess) {
-      const itemAlreadyExists =
-        await this.itemProcessRepository.findItemByProcess(
+
+    const existingItems = await Promise.all(
+      itemProcess.map(async (item) => {
+        return await this.itemProcessRepository.findItemByProcess(
           item.processo,
           item.codigo,
         );
-      if (!itemAlreadyExists) {
+      }),
+    );
+    for (const [index, item] of itemProcess.entries()) {
+      if (!existingItems[index]) {
         await this.itemProcessRepository.saveItemProcess(item);
       }
     }
