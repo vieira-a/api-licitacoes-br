@@ -1,12 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { ProcessRepository } from '../repositories/process.repository';
 import { FetchProcessService } from './fetch-process.service';
+import { SaveItemProcessService } from '../../../modules/process-item/services/save-item-process.service';
 
 @Injectable()
 export class SaveProcessService {
   constructor(
     private readonly fetchProcessService: FetchProcessService,
     private readonly processRepository: ProcessRepository,
+    private readonly saveItemProcessService: SaveItemProcessService,
   ) {}
 
   async saveProcess(): Promise<void> {
@@ -17,7 +19,9 @@ export class SaveProcessService {
         item.codigoLicitacao,
       );
       if (!processAlreadyExists) {
-        return await this.processRepository.saveProcess(item);
+        await this.processRepository.saveProcess(item);
+      } else if (processAlreadyExists) {
+        await this.saveItemProcessService.saveItemProcess();
       }
     }
   }

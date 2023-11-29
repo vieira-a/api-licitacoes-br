@@ -1,10 +1,4 @@
-import {
-  Controller,
-  Get,
-  HttpStatus,
-  Res,
-  UnprocessableEntityException,
-} from '@nestjs/common';
+import { Controller, Get, HttpStatus, Res } from '@nestjs/common';
 import { SaveProcessService } from '../services/save-process.service';
 import { Response } from 'express';
 import { serverError } from '../../../shared/exceptions/server-error';
@@ -15,18 +9,15 @@ export class FetchProcessController {
   @Get()
   async fetchProcess(@Res() res: Response) {
     try {
-      const result = await this.saveProcessService.saveProcess();
+      await this.saveProcessService.saveProcess();
 
-      if (result === undefined) {
-        throw new UnprocessableEntityException('Não há processos novos');
-      } else {
-        return res.json({
-          statusCode: HttpStatus.OK,
-          message: 'Processos salvos com sucesso',
-        });
-      }
+      return res.json({
+        statusCode: HttpStatus.OK,
+        message: 'Extração de processos executada com sucesso',
+      });
     } catch (error) {
-      return serverError(error, res, 'Houve uma falha ao salvar os processos');
+      console.log(error);
+      return serverError(error, res, 'Houve uma falha ao extrair processos');
     }
   }
 }

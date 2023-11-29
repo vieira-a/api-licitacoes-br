@@ -12,7 +12,7 @@ export class ItemProcessEntity {
   id: number;
 
   @Column({ name: 'quantidade', nullable: false })
-  quantidade: number;
+  quantidade: string;
 
   @Column({ name: 'valor_referencia', nullable: false })
   valorReferencia: string;

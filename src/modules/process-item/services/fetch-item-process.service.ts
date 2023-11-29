@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { ItemProcessRepository } from '../repositories/process-item.repository';
 import { ProcessRepository } from '../../process/repositories/process.repository';
 import { fetchApi } from '../../../shared/helpers/fetch-api';
 import { mapProcessItem } from '../helpers/item-process-mapper';
@@ -7,10 +6,7 @@ import { mapProcessItem } from '../helpers/item-process-mapper';
 @Injectable()
 export class FetchItemProcessService {
   private processItemUrl: string = `https://compras.api.portaldecompraspublicas.com.br/v2/licitacao`;
-  constructor(
-    private readonly itemProcessRepository: ItemProcessRepository,
-    private readonly processRepository: ProcessRepository,
-  ) {}
+  constructor(private readonly processRepository: ProcessRepository) {}
 
   async fetchItemProcess() {
     const codes = await this.processRepository.findAllCodes();
