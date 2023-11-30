@@ -31,7 +31,7 @@ export class ProcessRepository {
       .take(pageOptionsDto.take);
 
     if (filterOptions.resumo) {
-      queryBuilder.andWhere('processos.resumo LIKE :resumo', {
+      queryBuilder.andWhere('UPPER(processos.resumo) LIKE UPPER(:resumo)', {
         resumo: `%${filterOptions.resumo}%`,
       });
     }
