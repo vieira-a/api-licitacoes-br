@@ -12,8 +12,9 @@ export class LoadProcessController {
     @Query() pageOptionsDto: PageOptionsDto,
     @Query('resumo') resumo: string,
     @Query('numero') numero: string,
+    @Query('inicioLances') inicioLances: string,
   ): Promise<PageDto<ProcessDto>> {
-    const filter = { resumo, numero };
+    const filter = { resumo, numero, inicioLances };
     return await this.loadProcessService.findAll(pageOptionsDto, filter);
   }
 }

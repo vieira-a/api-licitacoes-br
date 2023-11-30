@@ -24,6 +24,7 @@ export class ProcessRepository {
     filterOptions?: {
       resumo?: string;
       numero?: string;
+      inicioLances?: string;
     },
   ): Promise<PageDto<ProcessDto>> {
     const queryBuilder = this.processRepository.createQueryBuilder('processos');
@@ -34,13 +35,25 @@ export class ProcessRepository {
       .take(pageOptionsDto.take);
 
     if (filterOptions) {
-      Object.keys(filterOptions).forEach((key) => {
-        if (filterOptions[key]) {
-          queryBuilder.andWhere(`UPPER(processos.${key}) LIKE UPPER(:${key})`, {
-            [key]: `%${filterOptions[key]}%`,
-          });
-        }
-      });
+      if (filterOptions.inicioLances) {
+        queryBuilder.andWhere(
+          `TO_CHAR(processos.inicio_lances::date, 'YYYY-MM-DD') = :inicioLances`,
+          {
+            inicioLances: filterOptions.inicioLances,
+          },
+        );
+      } else {
+        Object.entries(filterOptions).forEach(([key, value]) => {
+          if (value) {
+            queryBuilder.andWhere(
+              `UPPER(processos.${key}) LIKE UPPER(:${key})`,
+              {
+                [key]: `%${value}%`,
+              },
+            );
+          }
+        });
+      }
     }
 
     const itemCount = await queryBuilder.getCount();
