@@ -9,9 +9,11 @@ export class LoadItemProcessService {
 
   async findAll(
     pageOptionsDto: PageOptionsDto,
+    filter: any,
   ): Promise<PageDto<ProcessItemDto>> {
     return await this.itemProcessRepository.findAllProcessesItems(
       pageOptionsDto,
+      filter,
     );
   }
 }

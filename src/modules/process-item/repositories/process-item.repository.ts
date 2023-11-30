@@ -15,6 +15,10 @@ export class ItemProcessRepository {
 
   async findAllProcessesItems(
     pageOptionsDto: PageOptionsDto,
+    filterOptions?: {
+      processo?: number;
+      descricao?: string;
+    },
   ): Promise<PageDto<ProcessItemDto>> {
     const queryBuilder = this.itemProcessRepository
       .createQueryBuilder('itens_processos')
@@ -24,6 +28,25 @@ export class ItemProcessRepository {
       .orderBy('itens_processos.processo', pageOptionsDto.order)
       .skip(pageOptionsDto.skip)
       .take(pageOptionsDto.take);
+
+    if (filterOptions) {
+      if (filterOptions.processo) {
+        queryBuilder.andWhere(`itens_processos.processo = :processo`, {
+          processo: filterOptions.processo,
+        });
+      } else {
+        Object.entries(filterOptions).forEach(([key, value]) => {
+          if (value) {
+            queryBuilder.andWhere(
+              `UPPER(itens_processos.${key}) LIKE UPPER(:${key})`,
+              {
+                [key]: `%${value}%`,
+              },
+            );
+          }
+        });
+      }
+    }
 
     const itemCount = await queryBuilder.getCount();
     const { entities } = await queryBuilder.getRawAndEntities();

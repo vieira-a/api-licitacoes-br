@@ -12,7 +12,10 @@ export class LoadItemProcessController {
   @Get()
   async load(
     @Query() pageOptionsDto: PageOptionsDto,
+    @Query('processo') processo: number,
+    @Query('descricao') descricao: string,
   ): Promise<PageDto<ProcessItemDto>> {
-    return await this.loadItemProcessService.findAll(pageOptionsDto);
+    const filter = { processo, descricao };
+    return await this.loadItemProcessService.findAll(pageOptionsDto, filter);
   }
 }
