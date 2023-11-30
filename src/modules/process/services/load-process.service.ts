@@ -8,7 +8,13 @@ import { ProcessDto } from '../dtos/process.dto';
 export class LoadProcessService {
   constructor(private readonly processRepository: ProcessRepository) {}
 
-  async findAll(pageOptionsDto: PageOptionsDto): Promise<PageDto<ProcessDto>> {
-    return await this.processRepository.findAllProcesses(pageOptionsDto);
+  async findAll(
+    pageOptionsDto: PageOptionsDto,
+    filter: any,
+  ): Promise<PageDto<ProcessDto>> {
+    return await this.processRepository.findAllProcesses(
+      pageOptionsDto,
+      filter,
+    );
   }
 }

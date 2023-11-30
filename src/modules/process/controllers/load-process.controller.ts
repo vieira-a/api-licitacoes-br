@@ -10,7 +10,9 @@ export class LoadProcessController {
   @Get()
   async load(
     @Query() pageOptionsDto: PageOptionsDto,
+    @Query('resumo') resumo: string,
   ): Promise<PageDto<ProcessDto>> {
-    return await this.loadProcessService.findAll(pageOptionsDto);
+    const filter = { resumo };
+    return await this.loadProcessService.findAll(pageOptionsDto, filter);
   }
 }

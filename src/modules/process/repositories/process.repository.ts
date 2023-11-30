@@ -21,6 +21,7 @@ export class ProcessRepository {
 
   async findAllProcesses(
     pageOptionsDto: PageOptionsDto,
+    filterOptions?: { resumo?: string },
   ): Promise<PageDto<ProcessDto>> {
     const queryBuilder = this.processRepository.createQueryBuilder('processos');
 
@@ -28,6 +29,12 @@ export class ProcessRepository {
       .orderBy('processos.codigo_licitacao', pageOptionsDto.order)
       .skip(pageOptionsDto.skip)
       .take(pageOptionsDto.take);
+
+    if (filterOptions.resumo) {
+      queryBuilder.andWhere('processos.resumo LIKE :resumo', {
+        resumo: `%${filterOptions.resumo}%`,
+      });
+    }
 
     const itemCount = await queryBuilder.getCount();
     const { entities } = await queryBuilder.getRawAndEntities();
