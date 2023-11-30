@@ -4,6 +4,7 @@ import { ItemProcessEntity } from '../entities/item-process.entity';
 import { Repository } from 'typeorm';
 import { PageDto, PageMetaDto, PageOptionsDto } from '../../../shared/dtos';
 import { ProcessItemDto } from '../dtos/process-item.dto';
+import { mapDtoProcessItem } from '../helpers';
 
 @Injectable()
 export class ItemProcessRepository {
@@ -15,8 +16,10 @@ export class ItemProcessRepository {
   async findAllProcessesItems(
     pageOptionsDto: PageOptionsDto,
   ): Promise<PageDto<ProcessItemDto>> {
-    const queryBuilder =
-      this.itemProcessRepository.createQueryBuilder('itens_processos');
+    const queryBuilder = this.itemProcessRepository
+      .createQueryBuilder('itens_processos')
+      .leftJoinAndSelect('itens_processos.processo', 'processo');
+
     queryBuilder
       .orderBy('itens_processos.processo', pageOptionsDto.order)
       .skip(pageOptionsDto.skip)
@@ -30,7 +33,7 @@ export class ItemProcessRepository {
       pageOptionsDto,
     });
 
-    return new PageDto(entities, pageMetaDto);
+    return new PageDto(mapDtoProcessItem(entities), pageMetaDto);
   }
 
   async saveItemProcess(itemProcess: any) {
