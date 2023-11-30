@@ -3,6 +3,7 @@ import { ProcessRepository } from '../repositories/process.repository';
 import { FetchProcessService } from './fetch-process.service';
 import { SaveItemProcessService } from '../../../modules/process-item/services/save-item-process.service';
 import { getDeleteDate } from '../helpers';
+import { Cron, CronExpression } from '@nestjs/schedule';
 
 @Injectable()
 export class SaveProcessService {
@@ -12,6 +13,7 @@ export class SaveProcessService {
     private readonly saveItemProcessService: SaveItemProcessService,
   ) {}
 
+  @Cron(CronExpression.EVERY_4_HOURS)
   async saveProcess(): Promise<void> {
     const deleteDate = getDeleteDate();
     await this.processRepository.deleteProcessByDate(deleteDate);
