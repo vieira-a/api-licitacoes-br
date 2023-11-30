@@ -5,6 +5,7 @@ import {
   InternalServerErrorException,
   NotFoundException,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { LoadItemProcessService } from '../services/load-item-process.service';
 import { PageDto, PageOptionsDto } from '../../../shared/dtos';
@@ -15,6 +16,7 @@ import {
   ApiNotFoundResponse,
   ApiOkResponse,
 } from '@nestjs/swagger';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @Controller('items')
 @ApiTags('visualização de dados')
@@ -24,6 +26,7 @@ export class LoadItemProcessController {
   ) {}
 
   @Get()
+  @UseInterceptors(CacheInterceptor)
   @ApiOkResponse({
     status: HttpStatus.OK,
     type: ProcessItemDto,
