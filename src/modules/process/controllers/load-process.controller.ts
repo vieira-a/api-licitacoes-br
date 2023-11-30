@@ -8,7 +8,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { LoadProcessService } from '../services/load-process.service';
-import { ProcessDto } from '../dtos';
+import { ProcessDto } from '../dtos/process.dto';
 import { PageDto, PageOptionsDto } from '../../../shared/dtos';
 import {
   ApiInternalServerErrorResponse,
