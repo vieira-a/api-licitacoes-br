@@ -1,7 +1,6 @@
 import {
   Controller,
   Get,
-  HttpCode,
   HttpStatus,
   InternalServerErrorException,
   NotFoundException,
@@ -23,7 +22,6 @@ export class LoadProcessController {
   constructor(private readonly loadProcessService: LoadProcessService) {}
 
   @Get()
-  @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     status: HttpStatus.OK,
     type: ProcessDto,
