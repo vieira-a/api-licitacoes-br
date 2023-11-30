@@ -26,9 +26,18 @@ services:
     networks:
       - postgres
 
+  redis:
+    image: redis:7.0-alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+
+
 networks:
   postgres:
     driver: bridge
 
 volumes:
     postgres:
+    redis:

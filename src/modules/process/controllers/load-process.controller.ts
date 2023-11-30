@@ -5,6 +5,7 @@ import {
   InternalServerErrorException,
   NotFoundException,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { LoadProcessService } from '../services/load-process.service';
 import { ProcessDto } from '../dtos/process.dto';
@@ -15,6 +16,7 @@ import {
   ApiOkResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @Controller('process')
 @ApiTags('visualização de dados')
@@ -22,6 +24,7 @@ export class LoadProcessController {
   constructor(private readonly loadProcessService: LoadProcessService) {}
 
   @Get()
+  @UseInterceptors(CacheInterceptor)
   @ApiOkResponse({
     status: HttpStatus.OK,
     type: ProcessDto,
