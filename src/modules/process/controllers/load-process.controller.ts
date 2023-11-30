@@ -11,8 +11,9 @@ export class LoadProcessController {
   async load(
     @Query() pageOptionsDto: PageOptionsDto,
     @Query('resumo') resumo: string,
+    @Query('numero') numero: string,
   ): Promise<PageDto<ProcessDto>> {
-    const filter = { resumo };
+    const filter = { resumo, numero };
     return await this.loadProcessService.findAll(pageOptionsDto, filter);
   }
 }

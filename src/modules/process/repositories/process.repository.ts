@@ -21,7 +21,10 @@ export class ProcessRepository {
 
   async findAllProcesses(
     pageOptionsDto: PageOptionsDto,
-    filterOptions?: { resumo?: string },
+    filterOptions?: {
+      resumo?: string;
+      numero?: string;
+    },
   ): Promise<PageDto<ProcessDto>> {
     const queryBuilder = this.processRepository.createQueryBuilder('processos');
 
@@ -30,9 +33,13 @@ export class ProcessRepository {
       .skip(pageOptionsDto.skip)
       .take(pageOptionsDto.take);
 
-    if (filterOptions.resumo) {
-      queryBuilder.andWhere('UPPER(processos.resumo) LIKE UPPER(:resumo)', {
-        resumo: `%${filterOptions.resumo}%`,
+    if (filterOptions) {
+      Object.keys(filterOptions).forEach((key) => {
+        if (filterOptions[key]) {
+          queryBuilder.andWhere(`UPPER(processos.${key}) LIKE UPPER(:${key})`, {
+            [key]: `%${filterOptions[key]}%`,
+          });
+        }
       });
     }
 
