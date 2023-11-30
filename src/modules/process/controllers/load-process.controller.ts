@@ -17,7 +17,7 @@ import {
 } from '@nestjs/swagger';
 
 @Controller('process')
-@ApiTags('processos')
+@ApiTags('visualização de dados')
 export class LoadProcessController {
   constructor(private readonly loadProcessService: LoadProcessService) {}
 
