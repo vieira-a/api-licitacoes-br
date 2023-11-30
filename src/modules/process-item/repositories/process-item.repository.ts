@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ItemProcessEntity } from '../entities/item-process.entity';
 import { Repository } from 'typeorm';
+import { PageDto, PageMetaDto, PageOptionsDto } from '../../../shared/dtos';
+import { ProcessItemDto } from '../dtos/process-item.dto';
 
 @Injectable()
 export class ItemProcessRepository {
@@ -9,6 +11,27 @@ export class ItemProcessRepository {
     @InjectRepository(ItemProcessEntity)
     private readonly itemProcessRepository: Repository<ItemProcessEntity>,
   ) {}
+
+  async findAllProcessesItems(
+    pageOptionsDto: PageOptionsDto,
+  ): Promise<PageDto<ProcessItemDto>> {
+    const queryBuilder =
+      this.itemProcessRepository.createQueryBuilder('itens_processos');
+    queryBuilder
+      .orderBy('itens_processos.processo', pageOptionsDto.order)
+      .skip(pageOptionsDto.skip)
+      .take(pageOptionsDto.take);
+
+    const itemCount = await queryBuilder.getCount();
+    const { entities } = await queryBuilder.getRawAndEntities();
+
+    const pageMetaDto = new PageMetaDto({
+      itemCount,
+      pageOptionsDto,
+    });
+
+    return new PageDto(entities, pageMetaDto);
+  }
 
   async saveItemProcess(itemProcess: any) {
     await this.itemProcessRepository.save(itemProcess);
