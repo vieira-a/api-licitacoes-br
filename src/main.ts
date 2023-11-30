@@ -10,7 +10,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('api-licitacoes-br')
-    .setDescription('Extrator de processos licitarórios')
+    .setDescription(
+      'Extrator de processos licitatórios do Portal de Compras Públicas',
+    )
     .setVersion('1.0.0')
     .build();
 
