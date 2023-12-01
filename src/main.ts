@@ -7,6 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
+  app.setGlobalPrefix('api/v2');
 
   const config = new DocumentBuilder()
     .setTitle('api-licitacoes-br')
@@ -17,9 +18,7 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/doc', app, document);
-  await app.listen(3000, () =>
-    console.log(`App running at ${process.env.NODE_ENV} enviroment`),
-  );
+  SwaggerModule.setup('api/v2/docs', app, document);
+  await app.listen(3000);
 }
 bootstrap();
