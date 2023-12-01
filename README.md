@@ -59,7 +59,6 @@ O objetivo desse projeto é prover uma solução para automatizar a extração d
 > Extração de itens de processos da API
 
 - Realiza buscas com URLs dinâmicas, compostas pelos códigos dos processos, passando por todos os itens de processos licitatórios cadastrados.
-
 - Gera massa de dados para persistência de acordo com parâmetro pré estabelecido: 
 
 > Salva os dados de itens de processos
@@ -77,6 +76,11 @@ O objetivo desse projeto é prover uma solução para automatizar a extração d
 > Execução automática dos serviços
 
 - Utiliza a biblioteca `@nestjs/schedule` para agendar execução automática dos serviços extração de dados da API e persistência em banco de dados
+
+> Aplicação de lock para evitar conflito de extrações concorrentes
+
+- Utiliza o Redis para armazenar temporariamente a flag que indica que um processo de extração está em andamento
+- Remove a flag ao final da extração, liberando a funcionalidade
 
 > Pesquisa de dados
 
