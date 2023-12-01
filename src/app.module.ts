@@ -6,6 +6,7 @@ import { dataSourceOptions } from 'db/data-source';
 import { ConfigModule } from '@nestjs/config';
 import { CacheModule } from '@nestjs/cache-manager';
 import { redisStore } from 'cache-manager-redis-yet';
+import { RedisModule } from './shared/services/redis/redis.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { redisStore } from 'cache-manager-redis-yet';
       }),
       isGlobal: true,
     }),
+    RedisModule,
   ],
 })
 export class AppModule {}
