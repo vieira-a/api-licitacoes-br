@@ -14,6 +14,8 @@ import {
   SaveItemProcessService,
 } from '../process-item/services';
 import { FetchProcessController, LoadProcessController } from './controllers';
+import { ExtractLockService } from '../../shared/services/extract-lock/extract-lock.service';
+import { RedisService } from '../../shared/services/redis/redis.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([ProcessEntity, ItemProcessEntity])],
@@ -26,6 +28,8 @@ import { FetchProcessController, LoadProcessController } from './controllers';
     SaveItemProcessService,
     FetchItemProcessService,
     ItemProcessRepository,
+    ExtractLockService,
+    RedisService,
   ],
 })
 export class ProcessMudule {}
