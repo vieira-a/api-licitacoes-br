@@ -1,55 +1,158 @@
+<h1 align="center">Extrator de processos licitarórios</h1>
 
-# Extrator de Processos Licitatórios
-Status: em desenvolvimento
+<p align="center">Automatizando Extração de Processos e Itens Licitatórios</p>
 
-## Contexto
+<p align="center">Status: em desenvolvimento</p>
 
-Este projeto (apenas backend) tem como objetivo criar um banco de dados abrangente contendo informações sobre os processos licitatórios no Brasil. Um dos sistemas essenciais para essa integração é o [Portal de Compras Públicas](https://www.portaldecompraspublicas.com.br/processos). Os dois prints exibidos na seção de Telas deste documento executam solicitações (requests) que carregam os dados na interface do site, e esses dados serão extraídos para nosso banco de dados.
+<p align="center">
+  <a href="#Projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Recursos">Recursos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Funcionalidades">Funcionalidades</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Como utilizar">Como utilizar</a>
+</p>
 
-## Requisitos
+<br>
 
-1. **Utilização de Transações**: Todas as operações no banco de dados selecionado devem ser realizadas dentro de transações.
+# Projeto
 
-2. **Tecnologias Utilizadas**:
-   - NestJS
-   - TypeScript
-   - PostgreSQL
+O objetivo desse projeto é prover uma solução para automatizar a extração de processos e itens licitatórios do [Portal de Compras Públicas](https://www.portaldecompraspublicas.com.br/).
 
-## Objetivo
+## Recursos
 
-O objetivo principal deste projeto é criar um sistema de extração automática de processos e itens licitatórios, com as seguintes funcionalidades:
+- Extração manual: provê uma rota para acionamento da funcionalidade de extração de processos e itens de processos.
 
-1. **Extração Automática de Processos e Itens**:
-   - 1.1. A extração deve ocorrer automaticamente quatro vezes por dia e deve incluir apenas os processos dos próximos 30 dias.
-   - 1.2. Deve-se considerar as diferenças entre cada extração. Isso significa que, se houver extrações às 14h e às 18h, a segunda extração deve levar em conta os processos novos que foram cadastrados e atualizá-los se houver mudanças após a primeira extração, além de excluir os processos que não existem mais.
+- Extração Automática de processos e itens de processos: realiza extrações automáticas programadas quatro vezes ao dia, assegurando a atualização contínua dos processos dos próximos 30 dias, mantendo-os sempre atualizados e precisos.
 
-2. **Rota para Forçar Extração via Chamada HTTP**:
-   - 2.1. Deve haver uma rota HTTP que permita forçar a extração de processos imediatamente quando chamada. Certifique-se de verificar se já não há uma extração em execução e não permitir extrações simultâneas.
+- Gerenciamento de cache para gerenciar as solicitações mais críticas
 
-3. **Rota de Busca de Processos Extraídos**:
-   - 3.1. Deve existir uma rota de busca que permita consultar os processos extraídos. Essa rota deve retornar os itens do processo junto com a solicitação.
-   - 3.2. A rota deve aceitar filtros, como data de início do processo, número do processo, uma busca textual no campo "resumo" e uma busca textual no campo "descrição do item".
-   - 3.3. A rota deve suportar paginação.
+- Personalização e Controle: possui diversos filtros que oferecem controle total sobre a pesquisa e acesso às informações necessárias.
 
-## Campos Obrigatórios na Importação
+- Documentação Abrangente: A documentação detalhada da API com Swagger garante clareza e fácil integração para futuros desenvolvimentos.
 
-### Campos Obrigatórios para a Importação de Processos:
-- [Referência de API](https://compras.api.portaldecompraspublicas.com.br/v2/licitacao/processos?)
-   - codigoLicitacao
-   - identificacao
-   - numero (número do processo)
-   - resumo
-   - codigoSituacaoEdital
-   - status.codigo
-   - dataHoraInicioLances (Data de início do processo)
+# Tecnologias
 
-### Campos Obrigatórios para a Importação de Itens do Processo:
-- [Referência de API](https://compras.api.portaldecompraspublicas.com.br/v2/licitacao/252073/itens?filtro=&pagina=1)
-   - quantidade
-   - valorReferencia
-   - descricao
-   - participacao.codigo
-   - codigo
+- Node.js
+- Nest.js
+- TypeScript
+- PostgreSQL
+- Redis
+- Docker
 
+# Funcionalidades
 
-Autor: [Anderson Vieira](https://linkedin/in/vieira-a)
+> Extração de processos da API
+
+- Realiza buscas com URLs dinâmicas, passando por todos os processos licitatórios cadastrados.
+- Gera massa de dados para persistência de acordo com parâmetro pré estabelecido: 
+   - Processos com data de início dos lances inferior ou igual aos próximos 30 dias, de acordo com a data corrente;
+   - Salva apenas processos novos
+
+> Salva os dados de processos
+
+- Caso o processo já esteja cadastrado, o sistema verifica se há atualizações dos itens do respectivo processo
+
+> Exclui processos antigos
+
+- Exclui processos e itens relacionados aos processos que possuem data de início dos lances superior a 30 dias, de acordo com a data corrente
+
+> Extração de itens de processos da API
+
+- Realiza buscas com URLs dinâmicas, compostas pelos códigos dos processos, passando por todos os itens de processos licitatórios cadastrados.
+
+- Gera massa de dados para persistência de acordo com parâmetro pré estabelecido: 
+
+> Salva os dados de itens de processos
+
+- Salva apenas itens novos
+
+> Transformação de dados
+
+- Utilização de `mappers` e `DTOs` para adequar os dados extraídos de acordo com as entidades pré estabelecidas
+
+> Tratamento de erros
+
+- Lida com erros de forma apropriada, evitando encerramento inesperado e mau funcionamento
+
+> Execução automática dos serviços
+
+- Utiliza a biblioteca `@nestjs/schedule` para agendar execução automática dos serviços extração de dados da API e persistência em banco de dados
+
+> Pesquisa de dados
+
+- Possui rotas para visualização de processos
+- Possui rotas para visualização de itens processos
+- Todas as rotas suportam paginação e retornos padronizados, de forma a facilitar a utilização da API
+
+> Gerenciamento de cache
+
+- Utiliza as bibliotecas `@nestjs/cache-manager`, `cache-manager` e `cache-manager-redis-yet` juntamente com o Redis para gerenciar o cache das principais das rotas de solicitações
+
+> Documentação
+
+- Utiliza a biblioteca `@nestjs/swagger` para criar uma documentação concisa e auto explicativa
+
+> Organização do projeto
+
+- Organiza arquivos do projeto por módulos, que contém suas respectivas funcionalidades
+- Organiza recursos compartilhados em diretórios separados, buscando facilitar a identificação dos recursos
+
+> Arquitetura do projeto
+
+- Utiliza os princípios arquiteturais oferecidos pelo Nest.js, fazendo uso apropriado de `Decorators`, `Dependency injection`, `Repositories`, juntamente com princípios de SOLID.
+
+# Como utilizar
+
+**1. Requisitos**
+
+Certifique-se de possuir os itens abaixo instalados:
+
+- [Node.js](https://nodejs.org/en/download)
+- [NPM](https://docs.npmjs.com/)
+- [Docker](https://www.docker.com/)
+- [Git](https://git-scm.com)
+
+**2. Clone este repositório**
+
+`git clone git@github.com:vieira-a/api-licitacoes-br.git`
+
+**3. Configure variáveis de ambiente**
+
+- Crie um arquivo `.env` na raiz do projeto de acordo com o arquivo `.env.example`:
+
+```
+DB_HOST=
+DB_PORT=
+DB_USERNAME=
+DB_PASSWORD=
+DB_NAME=
+DB_ADMIN_EMAIL=
+```
+Esses dados serão utilizados para criar o container do banco de dados **PostgreSQL** e da interface de gerenciamento do banco de dados, o **pgAdmin**
+
+**4. Crie e execute os containers necessários**
+
+`docker-compose up -d`
+
+**5. Instale as dependências do projeto**
+
+`npm install`
+
+**6. Realize a migração dos modelos de dados**
+
+`npm run migration:generate -- db/migrations/create-database-tables`
+
+Este comando criará um arquivo com as configurações das migrações que serão realizadas no diretório `db/migrations`
+
+**7. Execute as migrações**
+
+`npm run migration:run`
+
+**8. Inicialize a aplicação**
+
+`npm run start:dev`
+
+**9. Acesso**
+
+- API: http://localhost:3000/api/v2
+- Documentação: http://localhost:3000/api/v2/docs
