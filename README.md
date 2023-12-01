@@ -101,6 +101,71 @@ O objetivo desse projeto é prover uma solução para automatizar a extração d
 
 - Utiliza os princípios arquiteturais oferecidos pelo Nest.js, fazendo uso apropriado de `Decorators`, `Dependency injection`, `Repositories`, juntamente com princípios de SOLID.
 
+- Organização de arquivos e diretórios
+```
+src
+├── app.module.ts
+├── main.ts
+├── modules
+│   ├── process
+│   │   ├── controllers
+│   │   │   ├── fetch-process.controller.ts
+│   │   │   ├── index.ts
+│   │   │   └── load-process.controller.ts
+│   │   ├── dtos
+│   │   │   └── process.dto.ts
+│   │   ├── entities
+│   │   │   └── process.entity.ts
+│   │   ├── helpers
+│   │   │   ├── get-delete-date.ts
+│   │   │   ├── index.ts
+│   │   │   ├── process-dto.mapper.ts
+│   │   │   └── process.mapper.ts
+│   │   ├── process.module.ts
+│   │   ├── repositories
+│   │   │   └── process.repository.ts
+│   │   └── services
+│   │       ├── fetch-process.service.ts
+│   │       ├── index.ts
+│   │       ├── load-process.service.ts
+│   │       └── save-process.service.ts
+│   └── process-item
+│       ├── controllers
+│       │   ├── fetch-item-process.controller.ts
+│       │   ├── index.ts
+│       │   └── load-item-process.controller.ts
+│       ├── dtos
+│       │   └── process-item.dto.ts
+│       ├── entities
+│       │   └── item-process.entity.ts
+│       ├── helpers
+│       │   ├── index.ts
+│       │   ├── item-process-dto.mapper.ts
+│       │   └── item-process-mapper.ts
+│       ├── item-processo.module.ts
+│       ├── repositories
+│       │   └── process-item.repository.ts
+│       └── services
+│           ├── fetch-item-process.service.ts
+│           ├── index.ts
+│           ├── load-item-process.service.ts
+│           └── save-item-process.service.ts
+└── shared
+    ├── dtos
+    │   ├── index.ts
+    │   ├── page.dto.ts
+    │   ├── page-meta.dto.ts
+    │   └── page-options.dto.ts
+    ├── enums
+    │   └── page-order.ts
+    ├── exceptions
+    │   └── server-error.ts
+    ├── helpers
+    │   └── fetch-api.ts
+    └── interfaces
+        └── page-meta-params.ts
+```
+
 # Como utilizar
 
 **1. Requisitos**
